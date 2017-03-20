@@ -55,8 +55,9 @@ function startScan() {
         function (result) {
             var s =  result.text;
             resultDiv.innerHTML = s;
-            var modalbutton=document.getElementById("modal1");
-            modalbutton.click();
+            $('#results').append(s)
+            //var modalbutton=document.getElementById("modal1");
+            $('#myModal').modal('show')
         },
         function (error) {
             alert("Scanning failed: " + error);
