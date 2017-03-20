@@ -180,11 +180,11 @@ desired effect
       var res = document.getElementById("results").value;
       //alert(res); 
       //var sid = document.getElementById("StudentID").value;
-
+       var tid = localStorage.teacher_id;
         $.ajax({
           url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
           type: 'POST',
-          data: {id_number: res, teacher_id:localStorage.teacher_id },
+          data: {id_number: res, teacher_id:tid },
           success: function(response) {
                           console.log(response);
           }
