@@ -44,10 +44,16 @@ function startScan() {
             modalbutton.click();
         }*/
 
-        function (result) {
+        /*function (result) {
             var s = "Result: " + result.text + "<br/>" +
             "Format: " + result.format + "<br/>" +
             "Cancelled: " + result.cancelled;
+            resultDiv.innerHTML = s;
+            var modalbutton=document.getElementById("modal1");
+            modalbutton.click();
+        },*/
+        function (result) {
+            var s =  result.text;
             resultDiv.innerHTML = s;
             var modalbutton=document.getElementById("modal1");
             modalbutton.click();

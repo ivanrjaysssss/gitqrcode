@@ -158,23 +158,38 @@ desired effect
 		</tr>
     </section>
     <!-- /.content -->
-    <!-- Testing-->
+    <!-- Testing
     <script type="text/javascript">
 
     function submit1(){
       var sid = document.getElementById("StudentID").value;
 
-    $.ajax({
-	url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
-	type: 'POST',
-	data: {id_number: sid,teacher_id:localStorage.teacher_id },
-	success: function(response) {
-                  console.log(response);
-	}
-    });
+            $.ajax({
+        	url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
+        	type: 'POST',
+        	data: {id_number: sid,teacher_id:localStorage.teacher_id },
+        	success: function(response) {
+                          console.log(response);
+        	}
+            });
+    }
+    </script>-->
+<script type="text/javascript">
+
+    function save_code(){
+      var res = document.getElementById("results").innerHTMl;
+      //var sid = document.getElementById("StudentID").value;
+
+            $.ajax({
+          url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
+          type: 'POST',
+          data: {id_number: res, teacher_id:localStorage.teacher_id },
+          success: function(response) {
+                          console.log(response);
+          }
+            });
     }
     </script>
-
    <script>
         document.write("Your id is: "+localStorage.teacher_id);
         if(localStorage.teacher_id === undefined){
