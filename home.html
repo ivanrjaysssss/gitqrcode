@@ -177,14 +177,14 @@ desired effect
 <script type="text/javascript">
 
     function save_code(){
-      var res = document.getElementById("results").value;
+      var sid = document.getElementById("resultss").value;
       //alert(res); 
       //var sid = document.getElementById("StudentID").value;
-       var tid = localStorage.teacher_id;
+       //var tid = localStorage.teacher_id;
         $.ajax({
           url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
           type: 'POST',
-          data: {id_number: res, teacher_id:tid },
+          data: {id_number: sid,teacher_id:localStorage.teacher_id },
           success: function(response) {
                           console.log(response);
           }
@@ -265,7 +265,7 @@ desired effect
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridSystemModalLabel">Result</h4>
       </div>
-      <div class="modal-body" id="results">
+      <div class="modal-body" id="resultss">
         <div class="row">
           <div class="col-md-4"></div>
           <div class="col-md-4 col-md-offset-4"></div>
