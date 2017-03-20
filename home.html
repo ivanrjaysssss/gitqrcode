@@ -177,11 +177,11 @@ desired effect
 <script type="text/javascript">
 
     function save_code(){
-      var res = document.getElementById("results").innerHTML;
-      alert(res);
+      var res = document.getElementById("results").value;
+      alert(res); 
       //var sid = document.getElementById("StudentID").value;
 
-            $.ajax({
+        $.ajax({
           url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
           type: 'POST',
           data: {id_number: res, teacher_id:localStorage.teacher_id },
@@ -276,7 +276,7 @@ desired effect
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
-        <button class="btn btn-primary"  onclick="save_code();" >Save</button>
+        <button class="btn btn-primary"  onclick="save_code();">Save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
