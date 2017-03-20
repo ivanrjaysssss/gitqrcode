@@ -131,7 +131,7 @@ desired effect
       var myusername = document.getElementById("username").value;
       var mypassword = document.getElementById("password").value;
     $.ajax({
-	url: 'http://localhost/github/qrcscanner/login/userverify',
+	url: 'http://192.168.200.110/github/qrcscanner/login/userverify',
 	type: 'POST',
 	data: {username: myusername,login_password: mypassword},
 	success: function(response) {
