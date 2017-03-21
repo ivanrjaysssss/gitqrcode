@@ -1,4 +1,4 @@
-/*var resultDiv;
+var resultDiv;
 
 document.addEventListener("deviceready", init, false);
 function init() {
@@ -6,22 +6,20 @@ function init() {
     resultDiv = document.querySelector("#results");
 }
 function save_code2(){
-        //var id = document.getElementById("results").innerHTML;
-       
-            var tid = localStorage.teacher_id;
-         var id = document.getElementById("results").innerHTML;
-         alert(id);
+    var sid = document.getElementById("results").innerHTML;
+      //alert(res); 
+      //var sid = document.getElementById("StudentID").value;
+       //var tid = localStorage.teacher_id;
+       alert(sid);
+       alert(localStorage.teacher_id);
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
-          data: {id_number:id, teacher_id:tid},
+          data: {id_number: sid,teacher_id:localStorage.teacher_id },
           success: function(response) {
-        }
-    });
-    var modalbutton1=document.getElementById("close");
-  modalbutton1.click();
-  startScan();
-      
+                          alert(response);
+          }
+            });
 }
 function save_code(){
 
@@ -43,7 +41,8 @@ function save_code(){
 	}
 });
 
-  
+  */
+
   var modalbutton1=document.getElementById("close");
   modalbutton1.click();
   startScan();
@@ -69,7 +68,7 @@ function startScan() {
             resultDiv.innerHTML = s;
             var modalbutton=document.getElementById("modal1");
             modalbutton.click();
-        },
+        },*/
         function (result) {
             var s =  result.text;
             document.getElementById("results").innerHTML=" ";

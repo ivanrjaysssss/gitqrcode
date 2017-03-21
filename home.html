@@ -33,18 +33,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-
-
-
-
-
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -171,14 +159,60 @@ desired effect
     </section>
     <!-- /.content -->
     <!-- Testing-->
-    
+    <script type="text/javascript">
 
-    <!--<center>
+    function submit1(){
+      var sid = document.getElementById("StudentID").value;
+
+            $.ajax({
+        	url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
+        	type: 'POST',
+        	data: {id_number: sid,teacher_id:localStorage.teacher_id },
+        	success: function(response) {
+                          console.log(response);
+        	}
+            });
+    }
+    </script>
+<script type="text/javascript">
+
+    function save_code1(){
+      var sid = document.getElementById("results").innerHTML;
+      //alert(res); 
+      //var sid = document.getElementById("StudentID").value;
+       //var tid = localStorage.teacher_id;
+        $.ajax({
+          url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
+          type: 'POST',
+          data: {id_number: sid,teacher_id:localStorage.teacher_id },
+          success: function(response) {
+                          console.log(response);
+          }
+            });
+    }
+    </script>
+   <script>
+        document.write("Your id is: "+localStorage.teacher_id);
+        if(localStorage.teacher_id === undefined){
+          alert("You need to login first!");
+          window.location.href="index.html";
+        }
+    </script>
+
+    <script>
+        function sign_out(){
+            localStorage.clear();
+            window.location.href="index.html";
+        }
+    </script>
+
+
+    <center>
         <input type="text" name="id_number" id="StudentID" placeholder="id number" required/>
         <input type="submit" onclick="submit1();" />
 
 
-    </center>-->
+    </center>
 
 
 
@@ -203,7 +237,18 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
 
+
+
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
@@ -220,131 +265,17 @@ desired effect
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridSystemModalLabel">Result</h4>
       </div>
-      <div class="modal-body" id="result">
+      <div class="modal-body" id="results">
          
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
-        <button class="btn btn-primary"  onclick="save_code();" >Save</button>
+        <button class="btn btn-primary"  onclick="save_code2();">Save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 </body>
-
-<!--<script type="text/javascript">
-
-    function submit1(){
-      var sid = document.getElementById("StudentID").value;
-
-        $.ajax({
-          url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
-          'http://192.168.200.107/github/qrcscanner/home/updateattendance',
-          type: 'POST',
-          data: {id_number: sid,teacher_id:localStorage.teacher_id },
-          success: function(response) {
-                          alert(response);
-          }
-            });
-    }
-    </script>-->
-<!--<script type="text/javascript">
-
-    function save_code1(){
-      var sid = document.getElementById("results").innerHTML;
-      //alert(res); 
-      //var sid = document.getElementById("StudentID").value;
-       //var tid = localStorage.teacher_id;
-        $.ajax({
-          url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
-          type: 'POST',
-          data: {id_number: sid,teacher_id:localStorage.teacher_id },
-          success: function(response) {
-                          console.log(response);
-          }
-            });
-    }
-    </script>-->
-   <script type="text/javascript">
-        document.write("Your id is: "+localStorage.teacher_id);
-        if(localStorage.teacher_id === undefined){
-          alert("You need to login first!");
-          window.location.href="index.html";
-        }
-    </script>
-
-    <script type="text/javascript">
-        function sign_out(){
-            localStorage.clear();
-            window.location.href="index.html";
-        }
-    </script>
-    <script type="text/javascript">
-      var resultDiv;
-
-document.addEventListener("deviceready", init, false);
-function init() {
-    document.querySelector("#startScan").addEventListener("touchend", startScan, false);
-    resultDiv = document.querySelector("#result");
-}
-function save_code(){
-        //var id = document.getElementById("results").innerHTML;
-       
-          var tid = localStorage.teacher_id;
-          var id = document.getElementById("result").innerHTML;
-         alert(id);
-        $.ajax({
-          url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
-          type: 'POST',
-          data: {id_number:id, teacher_id:tid},
-          success: function(response) {
-            console.log(response);
-        }
-    });
-    var modalbutton1=document.getElementById("close");
-  modalbutton1.click();
-  startScan();
-      
-}
-
-function startScan() {
-
-    cordova.plugins.barcodeScanner.scan(
-
-
-        /*function (result) {
-            var s = "Id number: <div id=StudentID>" + result.text + "</div><br/>" +
-            "Format: " + result.format + "<br/>" +
-            "Cancelled: " + result.cancelled;
-            resultDiv.innerHTML = s;
-            var modalbutton=document.getElementById("modal1");
-            modalbutton.click();
-        }*/
-
-        /*function (result) {
-            var s = "Result: " + result.text + "<br/>" +
-            "Format: " + result.format + "<br/>" +
-            "Cancelled: " + result.cancelled;
-            resultDiv.innerHTML = s;
-            var modalbutton=document.getElementById("modal1");
-            modalbutton.click();
-        },*/
-        function (result) {
-            var s =  result.text;
-            document.getElementById("result").innerHTML=" ";
-            //resultDiv.innerHTML = s;
-            $('#result').append(s)
-            //document.getElementById("qrvalue").value = s;
-            //var modalbutton=document.getElementById("modal1");
-            $('#myModal').modal('show')
-        },
-        function (error) {
-            alert("Scanning failed: " + error);
-        }
-    );
-}
-
-    </script>
 </html>
