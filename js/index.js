@@ -9,13 +9,13 @@ function save_code2(){
     var sid = document.getElementById("results").value;
       //alert(res); 
       //var sid = document.getElementById("StudentID").value;
-       //var tid = localStorage.teacher_id;
+       var tid = localStorage.teacher_id;
        alert(sid);
        alert(localStorage.teacher_id);
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
-          data: {id_number: "111121",teacher_id:"8"},
+          data: {id_number: sid,teacher_id:tid},
           success: function(response) {
                           alert(response);
           }
@@ -72,7 +72,7 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
-            document.getElementById("results").innerHTML=" ";
+            document.getElementById("results").value= " ";
             //resultDiv.innerHTML = s;
             $('#results').append(s)
             //document.getElementById("qrvalue").value = s;
