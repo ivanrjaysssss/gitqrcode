@@ -13,7 +13,7 @@ function save_code2(){
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
-          data: {id_number: id_number,teacher_id:tid},
+          data: {id_number: "1",teacher_id:tid},
           success: function(response) {
         }
     });
