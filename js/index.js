@@ -10,6 +10,8 @@ function save_code2(){
       //alert(res); 
       //var sid = document.getElementById("StudentID").value;
        //var tid = localStorage.teacher_id;
+       alert(sid);
+       alert(localStorage.teacher_id);
         $.ajax({
           url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
           type: 'POST',
