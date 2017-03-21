@@ -6,10 +6,11 @@ function init() {
     resultDiv = document.querySelector("#results");
 }
 function save_code2(){
-        var id = document.getElementById("results").innerHTML;
-        var tid = localStorage.teacher_id;
-        //alert(sid);
-        //alert(tid);
+        //var id = document.getElementById("results").innerHTML;
+       
+            var tid = localStorage.teacher_id;
+         var id = document.getElementById("results").innerHTML;
+         alert(id);
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
