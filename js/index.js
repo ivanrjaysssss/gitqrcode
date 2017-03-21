@@ -54,6 +54,7 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
+            document.getElementById("results").innerHTML=" ";
             //resultDiv.innerHTML = s;
             $('#results').append(s)
             //var modalbutton=document.getElementById("modal1");
