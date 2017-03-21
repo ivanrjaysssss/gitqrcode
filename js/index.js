@@ -5,19 +5,11 @@ function init() {
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
     resultDiv = document.querySelector("#results");
 }
+function save_code2(){
+    alert("me");
+}
 function save_code(){
-     var sid = document.getElementById("results").innerHTML;
-      //alert(res); 
-      //var sid = document.getElementById("StudentID").value;
-       //var tid = localStorage.teacher_id;
-        $.ajax({
-          url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
-          type: 'POST',
-          data: {id_number: "111124",teacher_id:"4"},
-          success: function(response) {
-                          console.log(response);
-          }
-            });
+
   //save
 
 
