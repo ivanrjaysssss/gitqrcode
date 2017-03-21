@@ -220,13 +220,13 @@ desired effect
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridSystemModalLabel">Result</h4>
       </div>
-      <input class="modal-body" id="result" type="text"/>
+      <div class="modal-body" id="result">
          
-      
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
-        <button class="btn btn-primary"  onclick="save_code2();">Save</button>
+        <button class="btn btn-primary"  onclick="save_code();" >Save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -289,11 +289,11 @@ function init() {
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
     resultDiv = document.querySelector("#result");
 }
-function save_code2(){
+function save_code(){
         //var id = document.getElementById("results").innerHTML;
        
           var tid = localStorage.teacher_id;
-          var id = document.getElementById("result").value;
+          var id = document.getElementById("result").innerHTML;
          alert(id);
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
@@ -333,7 +333,7 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
-            document.getElementById("result").value=" ";
+            document.getElementById("result").innerHTML=" ";
             //resultDiv.innerHTML = s;
             $('#result').append(s)
             //document.getElementById("qrvalue").value = s;
