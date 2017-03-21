@@ -6,7 +6,7 @@ function init() {
     resultDiv = document.querySelector("#results");
 }
 function save_code2(){
-    var sid = document.getElementById("results").innerHTML;
+    var sid = document.getElementById("results").value;
       //alert(res); 
       //var sid = document.getElementById("StudentID").value;
        //var tid = localStorage.teacher_id;
