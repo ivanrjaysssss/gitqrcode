@@ -15,7 +15,7 @@ function save_code2(){
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
-          data: {id_number: sid,teacher_id:localStorage.teacher_id },
+          data: {id_number: "111121",teacher_id:"8"},
           success: function(response) {
                           alert(response);
           }
