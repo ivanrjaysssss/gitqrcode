@@ -6,17 +6,15 @@ function init() {
     resultDiv = document.querySelector("#results");
 }
 function save_code2(){
-        var sid = document.getElementById("results").innerHTML;
+        var id_number = document.getElementById("results").innerHTML;
         var tid = localStorage.teacher_id;
         //alert(sid);
         //alert(tid);
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
-          data: {id_number: sid,teacher_id:tid},
+          data: {id_number: id_number,teacher_id:tid},
           success: function(response) {
-                          alert(response);
-                            alert(id_number);
         }
     });
     var modalbutton1=document.getElementById("close");
