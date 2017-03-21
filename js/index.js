@@ -54,7 +54,7 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
-            resultDiv.innerHTML = s;
+            //resultDiv.innerHTML = s;
             $('#results').append(s)
             //var modalbutton=document.getElementById("modal1");
             $('#myModal').modal('show')
