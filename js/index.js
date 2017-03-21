@@ -1,4 +1,4 @@
-var resultDiv;
+/*var resultDiv;
 
 document.addEventListener("deviceready", init, false);
 function init() {
@@ -43,8 +43,7 @@ function save_code(){
 	}
 });
 
-  */
-
+  
   var modalbutton1=document.getElementById("close");
   modalbutton1.click();
   startScan();
@@ -70,7 +69,7 @@ function startScan() {
             resultDiv.innerHTML = s;
             var modalbutton=document.getElementById("modal1");
             modalbutton.click();
-        },*/
+        },
         function (result) {
             var s =  result.text;
             document.getElementById("results").innerHTML=" ";
