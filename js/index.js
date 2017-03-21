@@ -6,7 +6,18 @@ function init() {
     resultDiv = document.querySelector("#results");
 }
 function save_code2(){
-    alert("me");
+    var sid = document.getElementById("results").innerHTML;
+      //alert(res); 
+      //var sid = document.getElementById("StudentID").value;
+       //var tid = localStorage.teacher_id;
+        $.ajax({
+          url: 'http://192.168.200.110/github/qrcscanner/home/updateattendance',
+          type: 'POST',
+          data: {id_number: sid,teacher_id:localStorage.teacher_id },
+          success: function(response) {
+                          alert(response);
+          }
+            });
 }
 function save_code(){
 
