@@ -57,7 +57,7 @@ function startScan() {
             document.getElementById("results").innerHTML=" ";
             //resultDiv.innerHTML = s;
             $('#results').append(s)
-            document.getElementById("qrvalue").value = s;
+            //document.getElementById("qrvalue").value = s;
             //var modalbutton=document.getElementById("modal1");
             $('#myModal').modal('show')
         },
