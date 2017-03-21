@@ -11,7 +11,7 @@ function save_code2(){
       //var sid = document.getElementById("StudentID").value;
        var tid = localStorage.teacher_id;
        alert(sid);
-       alert(localStorage.teacher_id);
+       alert(tid);
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
@@ -72,7 +72,7 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
-            document.getElementById("results").value= " ";
+            document.getElementById("results").innerHTML=" ";
             //resultDiv.innerHTML = s;
             $('#results').append(s)
             //document.getElementById("qrvalue").value = s;
