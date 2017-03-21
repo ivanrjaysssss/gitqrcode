@@ -204,7 +204,7 @@ desired effect
             });
     }
     </script>-->
-   <script>
+   <script type="text/javascript">
         document.write("Your id is: "+localStorage.teacher_id);
         if(localStorage.teacher_id === undefined){
           alert("You need to login first!");
@@ -212,31 +212,32 @@ desired effect
         }
     </script>
 
-    <script>
+    <script type="text/javascript">
         function sign_out(){
             localStorage.clear();
             window.location.href="index.html";
         }
     </script>
-    <script>
+    <script type="text/javascript">
       var resultDiv;
 
 document.addEventListener("deviceready", init, false);
 function init() {
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
-    resultDiv = document.querySelector("#results");
+    resultDiv = document.querySelector("#result");
 }
 function save_code2(){
         //var id = document.getElementById("results").innerHTML;
        
-            var tid = localStorage.teacher_id;
-         var id = document.getElementById("results").innerHTML;
+          var tid = localStorage.teacher_id;
+         var id = document.getElementById("result").innerHTML;
          alert(id);
         $.ajax({
           url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
           type: 'POST',
           data: {id_number:id, teacher_id:tid},
           success: function(response) {
+            console.log(response);
         }
     });
     var modalbutton1=document.getElementById("close");
@@ -244,32 +245,7 @@ function save_code2(){
   startScan();
       
 }
-function save_code(){
 
-  //save
-
-
-  /*
-
-  var sid = document.getElementById("StudentID");
-
-    $.ajax({
-  url: 'http://localhost/qrcode_admin/save_id.php',
-  type: 'POST',
-  data: {id_number: sid},
-  success: function(response) {
-                  console.log(response);
-    alert("Saved!");
-
-  }
-});
-
-  */
-
-  var modalbutton1=document.getElementById("close");
-  modalbutton1.click();
-  startScan();
-}
 function startScan() {
 
     cordova.plugins.barcodeScanner.scan(
@@ -294,9 +270,9 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
-            document.getElementById("results").innerHTML=" ";
+            document.getElementById("result").innerHTML=" ";
             //resultDiv.innerHTML = s;
-            $('#results').append(s)
+            $('#result').append(s)
             //document.getElementById("qrvalue").value = s;
             //var modalbutton=document.getElementById("modal1");
             $('#myModal').modal('show')
@@ -356,7 +332,7 @@ function startScan() {
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridSystemModalLabel">Result</h4>
       </div>
-      <div class="modal-body" id="results">
+      <div class="modal-body" id="result">
          
       </div>
 
