@@ -167,7 +167,7 @@ desired effect
             $.ajax({
         	url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
         	type: 'POST',
-        	data: {id_number: sid,teacher_id:localStorage.teacher_id },
+        	data: {id_number: sid, teacher_id:localStorage.teacher_id},
         	success: function(response) {
                           console.log(response);
         	}
@@ -208,7 +208,8 @@ desired effect
 
 
     <center>
-        <input type="text" name="id_number" id="StudentID" placeholder="id number" required/>
+        <input type="text" name="id_number" id="StudentID" placeholder="id number">
+        <input type="text" name="id_number" id="results">
         <input type="submit" onclick="submit1();" />
 
 
