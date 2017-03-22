@@ -13,7 +13,7 @@ function save_code2(){
        alert(sid);
        alert(localStorage.teacher_id);
         $.ajax({
-          url: 'http://192.168.200.107/github/qrcscanner/home/updateattendance',
+          url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
           type: 'POST',
           data: {id_number: sid,teacher_id:localStorage.teacher_id },
           success: function(response) {
