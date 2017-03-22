@@ -56,9 +56,9 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
-            document.getElementById("results").innerHTML=" ";
+            document.getElementById("results").value=s;
             //resultDiv.innerHTML = s;
-            $('#results').append(s)
+            //$('#results').append(s)
             //document.getElementById("qrvalue").value = s;
             //var modalbutton=document.getElementById("modal1");
             $('#myModal').modal('show')
