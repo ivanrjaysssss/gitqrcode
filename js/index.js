@@ -5,22 +5,7 @@ function init() {
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
     resultDiv = document.querySelector("#results");
 }
-function save_code2(){
-    var sid = document.getElementById("results").innerHTML;
-      //alert(res); 
-      //var sid = document.getElementById("StudentID").value;
-       //var tid = localStorage.teacher_id;
-       alert(sid);
-       alert(localStorage.teacher_id);
-        $.ajax({
-          url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
-          type: 'POST',
-          data: {id_number: sid,teacher_id:localStorage.teacher_id },
-          success: function(response) {
-                          alert(response);
-          }
-            });
-}
+
 function save_code(){
 
   //save

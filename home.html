@@ -210,6 +210,7 @@ desired effect
     <center>
     <div id="results">
     </div>
+    <button type="submit" class="btn btn-primary"  onclick="save_code3();">Save</button>
         <input type="text" name="id_number" id="StudentID" placeholder="id number">
 
         <input type="submit" onclick="submit1();" />
@@ -273,7 +274,24 @@ desired effect
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-
+        <script>
+          function save_code3(){
+                var sid = document.getElementById("results").innerHTML;
+                  //alert(res); 
+                  //var sid = document.getElementById("StudentID").value;
+                   //var tid = localStorage.teacher_id;
+                   alert(sid);
+                   alert(localStorage.teacher_id);
+                    $.ajax({
+                      url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
+                      type: 'POST',
+                      data: {id_number: sid,teacher_id:localStorage.teacher_id },
+                      success: function(response) {
+                                      alert(response);
+                      }
+                        });
+            }
+        </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
