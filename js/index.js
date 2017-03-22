@@ -56,6 +56,7 @@ function startScan() {
         },*/
         function (result) {
             var s =  result.text;
+            document.getElementById("results").value=" ";
             document.getElementById("results").value=s;
             //resultDiv.innerHTML = s;
             //$('#results').append(s)
