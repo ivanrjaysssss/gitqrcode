@@ -143,6 +143,13 @@ desired effect
         Home
 
       </h1>
+      <script>
+        document.write("Your Account id is: "+localStorage.teacher_id);
+        if(localStorage.teacher_id === undefined){
+          alert("You need to login first!");
+          window.location.href="index.html";
+        }
+    </script>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <!--<li class="active">Here</li> -->
@@ -191,13 +198,7 @@ desired effect
             });
     }
     </script>
-   <script>
-        document.write("Your Account id is: "+localStorage.teacher_id);
-        if(localStorage.teacher_id === undefined){
-          alert("You need to login first!");
-          window.location.href="index.html";
-        }
-    </script>
+   
 
     <script>
         function sign_out(){
@@ -226,7 +227,7 @@ desired effect
 
 
     <center>
-    Student ID No:
+    Student ID No:<br>
     <input type="text" name="id_number" id="results" placeholder="Your Student ID">
       <br>
     <input type="submit" class="btn btn-primary" onclick="save_code3();" />
