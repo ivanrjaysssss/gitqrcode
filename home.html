@@ -192,7 +192,7 @@ desired effect
     }
     </script>
    <script>
-        document.write("Your id is: "+localStorage.teacher_id);
+        document.write("Your Account id is: "+localStorage.teacher_id);
         if(localStorage.teacher_id === undefined){
           alert("You need to login first!");
           window.location.href="index.html";
@@ -226,8 +226,9 @@ desired effect
 
 
     <center>
-    <input type="text" name="id_number" id="results" placeholder="id number">
-    <br>
+    ID No:
+    <input type="text" name="id_number" id="results" placeholder="Your Student ID">
+      <br>
     <input type="submit" class="btn btn-primary" onclick="save_code3();" />
 
         <input type="hidden" name="id_number" id="StudentID" placeholder="id number">
