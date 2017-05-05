@@ -58,6 +58,30 @@ function startScan() {
             var s =  result.text;
             document.getElementById("results").value=" ";
             document.getElementById("results").value=s;
+            document.getElementById("stud_code").value=" ";
+            document.getElementById("stud_code").value=s;
+            $.ajax({
+          url: 'http://qrcode.freesandboxdomain.com/login/userverify5',
+          type: 'POST',
+          data: {id: s},
+          success: function(response) {
+
+
+                                //localStorage.setItem(response);
+                                //console.log(response);
+                                var datas = JSON.parse(response);
+                                //var fname = datas.fname;
+                                //alert(datas.fname);
+                                
+                                  for(var i=0; i<datas.length; i++){
+                                    $('#name').append('<input type="text" class= "form-control" value ="'datas[i].lname+', '+datas[i].fname+' '+datas[i].fname'" readonly>');
+                                    
+                                  }
+                                //document.write("Your Account id is: "+response);
+                                //alert(fname);
+
+          }
+    });
             //resultDiv.innerHTML = s;
             //$('#results').append(s)
             //document.getElementById("qrvalue").value = s;
