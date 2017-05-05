@@ -139,16 +139,66 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Home
-
-      </h1>
+      <br/>
+      
       <script>
-        document.write("Your Account id is: "+localStorage.teacher_id);
+        //document.write("Your Account id is: "+localStorage.teacher_id);teacher_id
         if(localStorage.teacher_id === undefined){
           alert("You need to login first!");
           window.location.href="index.html";
+
         }
+    </script>
+   <!-- <button type="submit" class="btn btn-danger" onclick="actiona();">ganern</button>-->
+    
+    <script>
+   window.onload = function actiona () {
+    //alert(localStorage.teacher_id);
+       $.ajax({
+          url: 'http://qrcode.freesandboxdomain.com/login/userverify2',
+          type: 'POST',
+          data: {teacher_id: localStorage.teacher_id},
+          success: function(response) {
+
+
+                                //localStorage.setItem(response);
+                                //console.log(response);
+                                var datas = JSON.parse(response);
+                                //var fname = datas.fname;
+                                //alert(datas.fname);
+                                
+                                  for(var i=0; i<datas.length; i++){
+                                    $('#pogiit').append('<h5>'+datas[i].subjects+'</h5>');
+                                  }
+                                //document.write("Your Account id is: "+response);
+                                //alert(fname);
+
+          }
+    });
+        $.ajax({
+          url: 'http://qrcode.freesandboxdomain.com/login/userverify3',
+          type: 'POST',
+          data: {teacher_id: localStorage.teacher_id},
+          success: function(response) {
+
+
+                                //localStorage.setItem(response);
+                                //console.log(response);
+                                var datas = JSON.parse(response);
+                                //var fname = datas.fname;
+                                //alert(datas.fname);
+                                
+                                  for(var i=0; i<datas.length; i++){
+                                    $('#pogiit1').append('<h5>'+datas[i].year+'-'+datas[i].section+'</h5>');
+                                  }
+                                //document.write("Your Account id is: "+response);
+                                //alert(fname);
+
+          }
+    });
+   }
+
+
     </script>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -158,11 +208,24 @@ desired effect
     <!-- Main content -->
     <section class="content">
       <!-- Your Page Content Here -->
-		<tr>
-			<td>
+        <tr>
+            <td>
                 <button  class="btn btn-block btn-primary btn-lg" id="startScan">Start Scan</button><br />
             </td>
-		</tr>
+        </tr>
+    </section>
+   
+    <section style="margin-left: 30px;">
+        <b> Subjects handled: </b><br/>
+      <div id="pogiit" style="margin-left: 30px;">
+    </div>   
+
+    </section>
+    <section style="margin-left: 30px;">
+        <b> Advisee: </b><br/>
+      <div id="pogiit1" style="margin-left: 30px;">
+    </div>   
+
     </section>
     <!-- /.content -->
     <!-- Testing-->
@@ -172,12 +235,12 @@ desired effect
       var sid = document.getElementById("StudentID").value;
 
             $.ajax({
-        	url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
-        	type: 'POST',
-        	data: {id_number: sid, teacher_id:localStorage.teacher_id},
-        	success: function(response) {
+          url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
+          type: 'POST',
+          data: {id_number: sid, teacher_id:localStorage.teacher_id},
+          success: function(response) {
                           console.log(response);
-        	}
+          }
             });
     }
     </script>
@@ -185,7 +248,7 @@ desired effect
 
     function save_code1(){
       var sid = document.getElementById("results").innerHTML;
-      //alert(res); 
+      //alert(res);
       //var sid = document.getElementById("StudentID").value;
        //var tid = localStorage.teacher_id;
         $.ajax({
@@ -198,7 +261,7 @@ desired effect
             });
     }
     </script>
-   
+
 
     <script>
         function sign_out(){
@@ -209,7 +272,7 @@ desired effect
      <script>
           function save_code3(){
                 var sid = document.getElementById("results").value;
-                  //alert(res); 
+                  //alert(res);
                   //var sid = document.getElementById("StudentID").value;
                    //var tid = localStorage.teacher_id;
                    alert(sid);
@@ -295,13 +358,13 @@ desired effect
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-       
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
 
-    
+
 
 </body>
 </html>

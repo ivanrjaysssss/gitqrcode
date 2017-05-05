@@ -130,12 +130,13 @@ desired effect
     function login_me(){
       var myusername = document.getElementById("username").value;
       var mypassword = document.getElementById("password").value;
+      //alert(myusername);
     $.ajax({
-	url: 'http://qrcode.freesandboxdomain.com/login/userverify',
+	url: 'http://qrcode.freesandboxdomain.com/login/userverify1',
 	type: 'POST',
-	data: {username: myusername,login_password: mypassword},
+	data: {uname: myusername,login_pass: mypassword},
 	success: function(response) {
-                  console.log(response);
+                  //console.log(response);
                   if(response == "mismatch"){
                     alert("Invalid username/password!");
                     window.location.href="index.html";
@@ -144,6 +145,12 @@ desired effect
                   }else{
                         window.location.href="home.html";
                         localStorage.setItem("teacher_id",response);
+                        //console.log(response);
+                        var datas = JSON.parse(response);
+                        var fname = datas.fname;
+                        //console.log(fname);
+                        //alert(fname);
+
 
                   }
 	}
