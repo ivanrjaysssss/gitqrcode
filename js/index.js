@@ -74,7 +74,7 @@ function startScan() {
                                 //alert(datas.fname);
                                 
                                   for(var i=0; i<datas.length; i++){
-                                    $('#name').append('<input type="text" class= "form-control" value ="'datas[i].lname+', '+datas[i].fname+' '+datas[i].fname'" readonly>');
+                                    $('#name').append('<input type="text" class= "form-control" value ="'+datas[i].lname+', '+datas[i].fname+' '+datas[i].mname+'" readonly>');
                                     
                                   }
                                 //document.write("Your Account id is: "+response);
