@@ -140,7 +140,7 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <br/>
-      
+
       <script>
         //document.write("Your Account id is: "+localStorage.teacher_id);teacher_id
         if(localStorage.teacher_id === undefined){
@@ -150,7 +150,7 @@ desired effect
         }
     </script>
    <!-- <button type="submit" class="btn btn-danger" onclick="actiona();">ganern</button>-->
-    
+
     <script>
    window.onload = function actiona () {
     //alert(localStorage.teacher_id);
@@ -166,7 +166,7 @@ desired effect
                                 var datas = JSON.parse(response);
                                 //var fname = datas.fname;
                                 //alert(datas.fname);
-                                
+
                                   for(var i=0; i<datas.length; i++){
                                     $('#pogiit').append('<h5>'+datas[i].subjects+'</h5>');
                                     $('#subjects').append('<option value="'+datas[i].sub_id+'">'+datas[i].subjects+'</option>');
@@ -188,10 +188,10 @@ desired effect
                                 var datas = JSON.parse(response);
                                 //var fname = datas.fname;
                                 //alert(datas.fname);
-                                
+
                                   for(var i=0; i<datas.length; i++){
                                     $('#pogiit1').append('<h5>'+datas[i].year+'-'+datas[i].section+'</h5>');
-                                    
+
                                   }
                                 //document.write("Your Account id is: "+response);
                                 //alert(fname);
@@ -212,10 +212,10 @@ desired effect
                                 var datas = JSON.parse(response);
                                 //var fname = datas.fname;
                                 //alert(datas.fname);
-                                
+
                                   for(var i=0; i<datas.length; i++){
                                     $('#activities').append('<option value="'+datas[i].act_id+'">'+datas[i].activities+'</option>');
-                                    
+
                                   }
                                 //document.write("Your Account id is: "+response);
                                 //alert(fname);
@@ -242,17 +242,17 @@ desired effect
             </td>
         </tr>
     </section>
-   
+
     <section style="margin-left: 30px;">
         <b> Subjects handled: </b><br/>
       <div id="pogiit" style="margin-left: 30px;">
-    </div>   
+    </div>
 
     </section>
     <section style="margin-left: 30px;">
         <b> Advisee: </b><br/>
       <div id="pogiit1" style="margin-left: 30px;">
-    </div>   
+    </div>
 
     </section>
     <!-- /.content -->
@@ -291,10 +291,14 @@ desired effect
 
 
     function tryme(){
-        var s = '8';
+        var s = '13';
         alert (s);
         document.getElementById("stud_code").value=" ";
         document.getElementById("stud_code").value=s;
+
+
+
+
             $.ajax({
           url: 'http://qrcode.freesandboxdomain.com/login/userverify5',
           type: 'POST',
@@ -307,17 +311,22 @@ desired effect
                                 var datas = JSON.parse(response);
                                 //var fname = datas.fname;
                                 //alert(datas.fname);
-                                
+
                                   for(var i=0; i<datas.length; i++){
                                     $('#namevalue').remove();
                                     $('#name').append('<input type="text" id="namevalue" class= "form-control" value ="'+datas[i].lname+', '+datas[i].fname+' '+datas[i].mname+'" readonly>');
-                                    
+
                                   }
                                 //document.write("Your Account id is: "+response);
                                 //alert(fname);
 
           }
     });
+
+
+
+
+
     }
     </script>
 
@@ -329,7 +338,50 @@ desired effect
         }
     </script>
      <script>
+          function is_exist(sid,teacher_id, sub_id, act_id){
+              //alert(sid+"errors");
+          $.ajax({
+                    url: 'http://qrcode.freesandboxdomain.com/login/userverify6',
+                    type: 'POST',
+                    data: {id_number: sid,teacher_id:teacher_id, sub_id:sub_id, act_id:act_id},
+                    success: function(response) {
+                    alert(response+'asasa');
+                  if(response == "exist"){
+                    alert ('QR Code already scanned!');
+                    var modalbutton=document.getElementById("close_result");
+                    modalbutton.click();
+
+                    var modalbutton1=document.getElementById("startScan");
+                    modalbutton1.click();
+                    
+
+                  }else{
+
+                     $.ajax({
+                      //alert(is_exist(sid,localStorage.teacher_id, sub_id, act_id));
+                      url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
+                      type: 'POST',
+                      data: {id_number: sid,teacher_id:localStorage.teacher_id, sub_id:sub_id, act_id:act_id},
+                      success: function(response) {
+                                      alert(response);
+                      }
+                        });
+
+                     var modalbutton=document.getElementById("close_result");
+                    modalbutton.click();
+
+                    var modalbutton1=document.getElementById("startScan");
+                    modalbutton1.click();
+
+                     
+
+                  }
+                }
+          });
+
+        }
           function save_code3(){
+
                 //var sid = document.getElementById("results").value;
                   var sid = document.getElementById("stud_code").value;
                   var sub_id = document.getElementById("subjects").value;
@@ -338,11 +390,22 @@ desired effect
                   //alert(res);
                   //var sid = document.getElementById("StudentID").value;
                    //var tid = localStorage.teacher_id;
+
+
+
+
                    alert(sid);
                    alert(localStorage.teacher_id);
                    alert(sub_id);
                    alert(act_id);
-                    $.ajax({
+
+
+                    is_exist(sid,localStorage.teacher_id, sub_id, act_id);
+                        //alert('QR Code already scanned!');
+                       //alert(is_exist(sid,localStorage.teacher_id, sub_id, act_id));
+                    //}else{
+                    /*$.ajax({
+                      //alert(is_exist(sid,localStorage.teacher_id, sub_id, act_id));
                       url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
                       type: 'POST',
                       data: {id_number: sid,teacher_id:localStorage.teacher_id, sub_id:sub_id, act_id:act_id},
@@ -350,7 +413,9 @@ desired effect
                                       alert(response);
                       }
                         });
-            }
+*/
+                    
+      }
         </script>
 
 
@@ -375,7 +440,7 @@ desired effect
   <div class="modal-dialog col-md" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background: green">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" id="close_result" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridSystemModalLabel" style= "color: white">Scanned Result</h4>
       </div>
       <div class="modal-body">
@@ -383,31 +448,32 @@ desired effect
             <label>Name:</label>
               <div id = "name">
               </div>
-                        
+
           </section>
           <section style="margin-left: 20px; width: 170px;">
             <label>ID:</label>
-              <input type="text" id="stud_code" class="form-control" readonly>            
-          </section><br/> 
+              <input type="text" id="stud_code" class="form-control" readonly>
+          </section><br/>
           <section style="margin-left: 20px; width: 170px;">
             <label> Select Subject: </label>
               <select id="subjects" class="form-control">
-              </select>   
-          </section> 
+              </select>
+          </section>
           <br/>
           <section style="margin-left: 20px; width: 170px;">
             <label> Select Activity: </label>
               <select id="activities" class="form-control">
-              </select>   
+              </select>
 
-          </section> 
-          
-        
+          </section>
+
+
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
         <button class="btn btn-primary"  onclick="save_code3();">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
+
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
