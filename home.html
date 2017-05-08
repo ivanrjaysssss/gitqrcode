@@ -139,95 +139,10 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <br/>
-      
-      <script>
-        //document.write("Your Account id is: "+localStorage.teacher_id);teacher_id
-        if(localStorage.teacher_id === undefined){
-          alert("You need to login first!");
-          window.location.href="index.html";
+      <h1>
+        Home
 
-        }
-    </script>
-   <!-- <button type="submit" class="btn btn-danger" onclick="actiona();">ganern</button>-->
-    
-    <script>
-   window.onload = function actiona () {
-    //alert(localStorage.teacher_id);
-       $.ajax({
-          url: 'http://qrcode.freesandboxdomain.com/login/userverify2',
-          type: 'POST',
-          data: {teacher_id: localStorage.teacher_id},
-          success: function(response) {
-
-
-                                //localStorage.setItem(response);
-                                //console.log(response);
-                                var datas = JSON.parse(response);
-                                //var fname = datas.fname;
-                                //alert(datas.fname);
-                                
-                                  for(var i=0; i<datas.length; i++){
-                                    $('#pogiit').append('<h5>'+datas[i].subjects+'</h5>');
-                                    $('#subjects').append('<option value="'+datas[i].sub_id+'">'+datas[i].subjects+'</option>');
-                                  }
-                                //document.write("Your Account id is: "+response);
-                                //alert(fname);
-
-          }
-    });
-        $.ajax({
-          url: 'http://qrcode.freesandboxdomain.com/login/userverify3',
-          type: 'POST',
-          data: {teacher_id: localStorage.teacher_id},
-          success: function(response) {
-
-
-                                //localStorage.setItem(response);
-                                //console.log(response);
-                                var datas = JSON.parse(response);
-                                //var fname = datas.fname;
-                                //alert(datas.fname);
-                                
-                                  for(var i=0; i<datas.length; i++){
-                                    $('#pogiit1').append('<h5>'+datas[i].year+'-'+datas[i].section+'</h5>');
-                                    
-                                  }
-                                //document.write("Your Account id is: "+response);
-                                //alert(fname);
-
-          }
-    });
-
-
-         $.ajax({
-          url: 'http://qrcode.freesandboxdomain.com/login/userverify4',
-          type: 'POST',
-          data: {teacher_id: localStorage.teacher_id},
-          success: function(response) {
-
-
-                                //localStorage.setItem(response);
-                                //console.log(response);
-                                var datas = JSON.parse(response);
-                                //var fname = datas.fname;
-                                //alert(datas.fname);
-                                
-                                  for(var i=0; i<datas.length; i++){
-                                    $('#activities').append('<option value="'+datas[i].act_id+'">'+datas[i].activities+'</option>');
-                                    
-                                  }
-                                //document.write("Your Account id is: "+response);
-                                //alert(fname);
-
-          }
-    });
-
-
-   }
-
-
-    </script>
+      </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <!--<li class="active">Here</li> -->
@@ -236,24 +151,11 @@ desired effect
     <!-- Main content -->
     <section class="content">
       <!-- Your Page Content Here -->
-        <tr>
-            <td>
+		<tr>
+			<td>
                 <button  class="btn btn-block btn-primary btn-lg" id="startScan">Start Scan</button><br />
             </td>
-        </tr>
-    </section>
-   
-    <section style="margin-left: 30px;">
-        <b> Subjects handled: </b><br/>
-      <div id="pogiit" style="margin-left: 30px;">
-    </div>   
-
-    </section>
-    <section style="margin-left: 30px;">
-        <b> Advisee: </b><br/>
-      <div id="pogiit1" style="margin-left: 30px;">
-    </div>   
-
+		</tr>
     </section>
     <!-- /.content -->
     <!-- Testing-->
@@ -262,34 +164,24 @@ desired effect
     function submit1(){
       var sid = document.getElementById("StudentID").value;
 
-            $.ajax({
-          url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
-          type: 'POST',
-          data: {id_number: sid, teacher_id:localStorage.teacher_id},
-          success: function(response) {
-                          console.log(response);
-          }
-            });
-    }
-    </script>
-<script type="text/javascript">
-
-    function save_code1(){
-      var sid = document.getElementById("results").innerHTML;
-      //alert(res);
-      //var sid = document.getElementById("StudentID").value;
-       //var tid = localStorage.teacher_id;
-        $.ajax({
-          url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
-          type: 'POST',
-          data: {id_number: sid, teacher_id:localStorage.teacher_id },
-          success: function(response) {
-                          console.log(response);
-          }
-            });
+    $.ajax({
+	url: 'http://localhost/github/qrcscanner/home/updateattendance',
+	type: 'POST',
+	data: {id_number: sid,teacher_id:localStorage.teacher_id },
+	success: function(response) {
+                  console.log(response);
+	}
+    });
     }
     </script>
 
+   <script>
+        document.write("Your id is: "+localStorage.teacher_id);
+        if(localStorage.teacher_id === undefined){
+          alert("You need to login first!");
+          window.location.href="index.html";
+        }
+    </script>
 
     <script>
         function sign_out(){
@@ -297,83 +189,15 @@ desired effect
             window.location.href="index.html";
         }
     </script>
-     <script>
-          function save_code3(){
-                var sid = document.getElementById("results").value;
-                  //alert(res);
-                  //var sid = document.getElementById("StudentID").value;
-                   //var tid = localStorage.teacher_id;
-                   alert(sid);
-                   alert(localStorage.teacher_id);
-                    $.ajax({
-                      url: 'http://qrcode.freesandboxdomain.com/home/updateattendance',
-                      type: 'POST',
-                      data: {id_number: sid,teacher_id:localStorage.teacher_id },
-                      success: function(response) {
-                                      alert(response);
-                      }
-                        });
-            }
-        </script>
 
 
     <center>
-    Student ID No:<br>
-    <input type="text" name="id_number" id="results" placeholder="Your Student ID">
-      <br>
-    <input type="submit" class="btn btn-primary" onclick="save_code3();" />
-
-        <input type="hidden" name="id_number" id="StudentID" placeholder="id number">
-
-        <input type="hidden" onclick="submit1();" />
+        <input type="text" name="id_number" id="StudentID" placeholder="id number" required/>
+        <input type="submit" onclick="submit1();" />
 
 
     </center>
 
- <button style="display: block" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  My modal
-</button>
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Result</h4>
-      </div>
-      <div class="modal-body">
-          <section style="margin-left: 20px; width: 170px;">
-            <label>Name:</label>
-              <div id = "name">
-              </div>
-                        
-          </section>
-          <section style="margin-left: 20px; width: 170px;">
-            <label>ID:</label>
-              <input type="text" name="stud_code" class="form-control" readonly>            
-          </section><br/> 
-          <section style="margin-left: 20px; width: 170px;">
-            <label> Select Subject: </label>
-              <select id="subjects" class="form-control">
-              </select>   
-          </section> 
-          <br/>
-          <section style="margin-left: 20px; width: 170px;">
-            <label> Select Activity: </label>
-              <select id="activities" class="form-control">
-              </select>   
-
-          </section> 
-          
-         Please verify the Student ID No. then submit it to complete the attendance of the student
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" id="close">Save</button>
-        <!--<button class="btn btn-primary"  onclick="save_code2();">Save</button>-->
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 
   </div>
@@ -415,7 +239,32 @@ desired effect
      user experience. Slimscroll is required when using the
      fixed layout. -->
 
+     <button style="display: none" id="modal1" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  My modal
+</button>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Result</h4>
+      </div>
+      <div class="modal-body" id="results">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4 col-md-offset-4"></div>
+        </div>
 
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
+        <button class="btn btn-primary"  onclick="save_code();" >Save</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 </body>
 </html>
