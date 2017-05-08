@@ -348,11 +348,12 @@ desired effect
                     alert(response+'asasa');
                   if(response == "exist"){
                     alert ('QR Code already scanned!');
+                   
                     var modalbutton=document.getElementById("close_result");
                     modalbutton.click();
+                    startScan();
 
-                    var modalbutton1=document.getElementById("startScan");
-                    modalbutton1.click();
+                    
                     
 
                   }else{
@@ -366,12 +367,12 @@ desired effect
                                       alert(response);
                       }
                         });
-
-                     var modalbutton=document.getElementById("close_result");
+                    
+                    var modalbutton=document.getElementById("close_result");
                     modalbutton.click();
 
-                    var modalbutton1=document.getElementById("startScan");
-                    modalbutton1.click();
+                    startScan();
+                    
 
                      
 
