@@ -84,18 +84,18 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="img/teacher.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="img/teacher.png" class="img-circle" alt="User Image">
 
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <p id ="user_name">
+                  
+                  <small>Teacher</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -199,6 +199,29 @@ desired effect
           }
     });
 
+        $.ajax({
+          url: 'http://qrcode.freesandboxdomain.com/login/userverify7',
+          type: 'POST',
+          data: {teacher_id: localStorage.teacher_id},
+          success: function(response) {
+
+
+                                //localStorage.setItem(response);
+                                //console.log(response);
+                                var datas = JSON.parse(response);
+                                //var fname = datas.fname;
+                                //alert(datas.fname);
+
+                                  for(var i=0; i<datas.length; i++){
+                                    $('#user_name').append(datas[i].fname+' '+datas[i].mname+' '+datas[i].lname);
+
+                                  }
+                                //document.write("Your Account id is: "+response);
+                                //alert(fname);
+
+          }
+    });
+
 
          $.ajax({
           url: 'http://qrcode.freesandboxdomain.com/login/userverify4',
@@ -292,7 +315,7 @@ desired effect
 
     function tryme(){
         var s = '13';
-        alert (s);
+       // alert (s);
         document.getElementById("stud_code").value=" ";
         document.getElementById("stud_code").value=s;
 
@@ -345,7 +368,7 @@ desired effect
                     type: 'POST',
                     data: {id_number: sid,teacher_id:teacher_id, sub_id:sub_id, act_id:act_id},
                     success: function(response) {
-                    alert(response+'asasa');
+                    //alert(response+'asasa');
                   if(response == "exist"){
                     alert ('QR Code already scanned!');
                    
@@ -395,10 +418,10 @@ desired effect
 
 
 
-                   alert(sid);
-                   alert(localStorage.teacher_id);
-                   alert(sub_id);
-                   alert(act_id);
+                   //alert(sid);
+                   //alert(localStorage.teacher_id);
+                   //alert(sub_id);
+                   //alert(act_id);
 
 
                     is_exist(sid,localStorage.teacher_id, sub_id, act_id);
@@ -420,11 +443,11 @@ desired effect
         </script>
 
 
-    <center>
-    Student ID No:<br>
-    <input type="text" name="id_number" id="results" placeholder="Your Student ID">
+  <center>
+    <!--Student ID No:<br>-->
+    <input type="hidden" name="id_number" id="results" placeholder="Your Student ID">
       <br>
-    <input type="submit" class="btn btn-primary" onclick="save_code3();" />
+    <input type="hidden" class="btn btn-primary" onclick="save_code3();" />
 
         <input type="hidden" name="id_number" id="StudentID" placeholder="id number">
 
@@ -433,10 +456,10 @@ desired effect
 
     </center>
 
- <button style="display: block" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick = "tryme()">
+ <!--<button style="display: block" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick = "tryme()">
   My modal
-</button>
-
+</button><br/>-->
+<br/>
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
   <div class="modal-dialog col-md" role="document">
     <div class="modal-content">
